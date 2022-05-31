@@ -1,0 +1,11 @@
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassLogicaN.dll
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassLogicaN.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassDAL.dll
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassEntidades.dll
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassDAL.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\bin\Debug\ClassEntidades.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.AssemblyReference.cache
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.CopyComplete
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.dll
+C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.pdb

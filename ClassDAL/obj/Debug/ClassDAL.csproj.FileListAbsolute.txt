@@ -1,0 +1,9 @@
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\bin\Debug\ClassDAL.dll
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\bin\Debug\ClassDAL.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\obj\Debug\ClassDAL.csproj.AssemblyReference.cache
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\obj\Debug\ClassDAL.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\obj\Debug\ClassDAL.dll
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\obj\Debug\ClassDAL.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\bin\Debug\ClassEntidades.dll
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\bin\Debug\ClassEntidades.pdb
+C:\Users\mcmen\source\repos\Producto1\ClassDAL\obj\Debug\ClassDAL.csproj.CopyComplete

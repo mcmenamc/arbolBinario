@@ -1,0 +1,115 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebPresentacion.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mena De la rosa Jeús Antonio</title>
+    <link rel="icon" href="../images/favico.ico" type="image/x-icon">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../lib/font-awesome/css/all.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .img {
+            width: 100%;
+        }
+    </style>
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <link href="../lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <script src="../lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <link href="../lib/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="../lib/datatables/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid ">
+            <a class="navbar-brand active m-sm-4" href="#">
+                Credencial de elector</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link mx-3 " aria-current="page" href="/views/Insertar.aspx"><i class="fa-solid fa-plus "></i> Insertar</a>
+                    <a class="nav-link mx-3 " href="/views/Mostrar.aspx"><i class="fa-solid fa-eye "></i> Mostrar</a>
+                    <a class="nav-link mx-3 " href="/views/Eliminar.aspx "><i class="fa-solid fa-trash-can "></i> Eliminar</a>
+                    <a class="nav-link mx-3 " href="/views/Buscar.aspx"><i class="fa-solid fa-magnifying-glass "></i> Buscar</a>
+                    <a class="nav-link mx-3 " href="/views/Graficar.aspx"><i class="fas fa-project-diagram"></i> Graficar</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container ">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+
+    <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
+    <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
+
+</body>
+</html>
