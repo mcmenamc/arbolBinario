@@ -9,3 +9,14 @@ C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.csproj
 C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.CopyComplete
 C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.dll
 C:\Users\mcmen\source\repos\Producto1\ClassLogicaN\obj\Debug\ClassLogicaN.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassLogicaN.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassLogicaN.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassDAL.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassEntidades.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassDAL.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\bin\Debug\ClassEntidades.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.AssemblyReference.cache
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\obj\Debug\ClassLogicaN.csproj.CopyComplete
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\obj\Debug\ClassLogicaN.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassLogicaN\obj\Debug\ClassLogicaN.pdb

@@ -10,110 +10,160 @@ namespace ClassDAL
 {
     public class ClassLista
     {
-        private NodoLista Ancla = null;
+        private NodoLista Ancla;
         private int cuantaNodo = 0;
-
-        public string Agregar(NodoLista nuevo)
+        
+        public ClassLista()
         {
-            string salida = "";
-            NodoLista t = null;
+            Ancla = null;
+        }
 
-            if(Ancla == null)
+        public string Insertar(Credencial info)
+        {
+            NodoLista nuevo;
+            nuevo = new NodoLista();
+            nuevo.informacion = info;
+            nuevo.izq = null;
+            nuevo.der = null;
+            string mensaje;
+            if (this.Ancla == null)
             {
-                Ancla = nuevo;
-                salida = "Se Inserto el primer Nodo";
+                this.Ancla = nuevo;
+                mensaje = "Cabeza "+ this.Ancla.informacion.Mostrar();
             }
             else
             {
-                t = Ancla;
-                while(t.siguente != null){
-                    t = t.siguente;
-                }
-                t.siguente = nuevo;
-                salida = "Se inverto un nodo al final de la lista";
-            }
-            cuantaNodo++;
-            return salida;
-        }
-        public Credencial[] MostrarLista()
-        {
-            Credencial[] resultados = new Credencial[cuantaNodo];
-
-            NodoLista r1 = null;
-            int c = 0;
-            r1 = Ancla;
-
-            while (r1 != null)
-            {
-                resultados[c] = r1.informacion;
-                c++;
-                r1 = r1.siguente;
-            }
-            return resultados;
-        }
-        public NodoLista Buscar(string curp)
-        {
-            NodoLista r1 = null;
-            NodoLista piedrita = null;
-            r1 = Ancla;
-            while(r1 != null)
-            {
-                if(r1.informacion.Curp == curp)
+                NodoLista anterior = null, reco;
+                reco = this.Ancla;
+                while (reco != null)
                 {
-                    piedrita = r1;
+                    anterior = reco;
+                    if(info.Curp.Length < reco.informacion.Curp.Length)
+                        reco = reco.izq;
+                    else
+                        reco = reco.der;
                 }
-                r1 = r1.siguente;
-            }
-            return piedrita;
-        }
-        public NodoLista AnteriorParaBuscarEliminar(string curp)
-        {
-            NodoLista r1 = null;
-            NodoLista Anterio = null;
-            NodoLista AnteriorEncontrado = null;
-            r1 = Ancla;
-            Anterio = r1;
-            while(r1 != null)
-            {
-                if(r1.informacion.Curp == curp)
+                if (info.Curp.Length < anterior.informacion.Curp.Length)
                 {
-                    AnteriorEncontrado = Anterio;
-                }
-                Anterio = r1;
-                r1 = r1.siguente;
-            }
-            return AnteriorEncontrado;
-        }
-        public string EliminarNodo(string curp)
-        {
-            NodoLista Encontrado = null;
-            NodoLista Anterior = null;
-            string Salida = "";
-            Encontrado = Buscar(curp);
-            if(Encontrado != null)
-            {
-                if(Encontrado == Ancla)
-                {
-                    Ancla = Encontrado.siguente;
-                    Encontrado.siguente = null;
-                    Salida = "Se elimino el primer elemento";
+                    anterior.izq = nuevo;
+                    mensaje = "izquierda" + nuevo.informacion.Mostrar();
                 }
                 else
                 {
-                    Anterior = AnteriorParaBuscarEliminar(curp);
-                    Anterior.siguente = Encontrado.siguente;
-                    Encontrado.siguente = null;
-                    Encontrado = null;
-                    Salida = "Se elimino correctamente";
+                    anterior.der = nuevo;
+                    mensaje = "Derechca " + nuevo.informacion.Mostrar();
                 }
-                cuantaNodo--;
+                    
             }
-            else
-            {
-                Salida = "No se encontro por que no existe";
-            }
-            return Salida;
+            cuantaNodo++;
+            return mensaje;
         }
+        private Credencial ImprimePre(NodoLista reco)
+        {
+            Credencial nodoLista = null;
+            if(reco != null)
+            {
+                nodoLista = reco.informacion;
+                this.ImprimePre(reco.izq);
+                this.ImprimePre(reco.der);
+            }
+            return nodoLista;
+        }
+
+        public Credencial[] imprimePre()
+        {
+            Credencial[] resultados = new Credencial[cuantaNodo];
+
+            int c = 0;
+            NodoLista r1 = null;
+            r1 = this.Ancla;
+            while (c < cuantaNodo){
+                resultados[c] = this.ImprimePre(r1);
+                c++;
+            }
+            return resultados;
+        }
+
+        
+        //public Credencial[] MostrarLista()
+        //{
+        //    Credencial[] resultados = new Credencial[cuantaNodo];
+
+        //    NodoLista r1 = null;
+        //    int c = 0;
+        //    r1 = Ancla;
+
+        //    while (r1 != null)
+        //    {
+        //        resultados[c] = r1.informacion;
+        //        c++;
+        //        r1 = r1.siguente;
+        //    }
+        //    return resultados;
+        //}
+        //public NodoLista Buscar(string curp)
+        //{
+        //    NodoLista r1 = null;
+        //    NodoLista piedrita = null;
+        //    r1 = Ancla;
+        //    while(r1 != null)
+        //    {
+        //        if(r1.informacion.Curp == curp)
+        //        {
+        //            piedrita = r1;
+        //        }
+        //        r1 = r1.siguente;
+        //    }
+        //    return piedrita;
+        //}
+        //public NodoLista AnteriorParaBuscarEliminar(string curp)
+        //{
+        //    NodoLista r1 = null;
+        //    NodoLista Anterio = null;
+        //    NodoLista AnteriorEncontrado = null;
+        //    r1 = Ancla;
+        //    Anterio = r1;
+        //    while(r1 != null)
+        //    {
+        //        if(r1.informacion.Curp == curp)
+        //        {
+        //            AnteriorEncontrado = Anterio;
+        //        }
+        //        Anterio = r1;
+        //        r1 = r1.siguente;
+        //    }
+        //    return AnteriorEncontrado;
+        //}
+        //public string EliminarNodo(string curp)
+        //{
+        //    NodoLista Encontrado = null;
+        //    NodoLista Anterior = null;
+        //    string Salida = "";
+        //    Encontrado = Buscar(curp);
+        //    if(Encontrado != null)
+        //    {
+        //        if(Encontrado == Ancla)
+        //        {
+        //            Ancla = Encontrado.siguente;
+        //            Encontrado.siguente = null;
+        //            Salida = "Se elimino el primer elemento";
+        //        }
+        //        else
+        //        {
+        //            Anterior = AnteriorParaBuscarEliminar(curp);
+        //            Anterior.siguente = Encontrado.siguente;
+        //            Encontrado.siguente = null;
+        //            Encontrado = null;
+        //            Salida = "Se elimino correctamente";
+        //        }
+        //        cuantaNodo--;
+        //    }
+        //    else
+        //    {
+        //        Salida = "No se encontro por que no existe";
+        //    }
+        //    return Salida;
+        //}
     }
 
 }

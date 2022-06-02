@@ -4,3 +4,9 @@ C:\Users\mcmen\source\repos\Producto1\ClassEntidades\obj\Debug\ClassNodoListaLig
 C:\Users\mcmen\source\repos\Producto1\ClassEntidades\obj\Debug\ClassNodoListaLig.csproj.CoreCompileInputs.cache
 C:\Users\mcmen\source\repos\Producto1\ClassEntidades\obj\Debug\ClassEntidades.dll
 C:\Users\mcmen\source\repos\Producto1\ClassEntidades\obj\Debug\ClassEntidades.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\bin\Debug\ClassEntidades.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\bin\Debug\ClassEntidades.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\obj\Debug\ClassNodoListaLig.csproj.AssemblyReference.cache
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\obj\Debug\ClassNodoListaLig.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\obj\Debug\ClassEntidades.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\ClassEntidades\obj\Debug\ClassEntidades.pdb

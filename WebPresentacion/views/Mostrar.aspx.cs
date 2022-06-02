@@ -14,20 +14,24 @@ namespace WebPresentacion.views
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
-            //ListBox1.Items.Clear();
+            ListBox1.Items.Clear();
 
-            //Credencial[] credenciales = bl.MostrarCredencial();
+            //Credencial[] credenciales = bl.ImprimePre();
             //foreach (Credencial credencial in credenciales)
             //{
             //    ListBox1.Items.Add(credencial.Mostrar());
             //}
-
             
+            Credencial[] credenciales = bl.ImprimePre();
+            foreach (Credencial credencial in credenciales) {
+                ListBox1.Items.Add(credencial.Curp);
+            }
+
         }
-        public Credencial[] credenciales()
-        {
-            return bl.MostrarCredencial();
-        }
+        //public Credencial[] credenciales()
+        //{
+        //    return bl.MostrarCredencial();
+        //}
         
     }
 }

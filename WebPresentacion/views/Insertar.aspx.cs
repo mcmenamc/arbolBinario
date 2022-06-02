@@ -30,24 +30,34 @@ namespace WebPresentacion
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string cad;
             try
             {
-                cad = bl.InsertarCredencial(new ClassEntidades.NodoLista(
-                    new ClassEntidades.Credencial()
-                    {
-                        Curp = TxtCurp.Value,
-                        Domicilio = TxtDomicilio.Value,
-                        Estado = DropEstado.SelectedItem.ToString(),
-                        Municipio = DropMunicipio.SelectedItem.ToString(),
-                        Nombre = TxtNombre.Value,
-                        Seccion = Convert.ToInt32(TxtSeccion.Value),
-                        Vigencia = Convert.ToInt32(TxtVigencia.Value),
-                    }
-                    ));
-                Session["bl"] = bl;
-                Alerta.Text = cad;
+                //cad = bl.InsertarCredencial(new ClassEntidades.NodoLista(
+                //    new ClassEntidades.Credencial()
+                //    {
+                //        Curp = TxtCurp.Value,
+                //        Domicilio = TxtDomicilio.Value,
+                //        Estado = DropEstado.SelectedItem.ToString(),
+                //        Municipio = DropMunicipio.SelectedItem.ToString(),
+                //        Nombre = TxtNombre.Value,
+                //        Seccion = Convert.ToInt32(TxtSeccion.Value),
+                //        Vigencia = Convert.ToInt32(TxtVigencia.Value),
+                //    }
+                //    ));
+               Alerta.Text = bl.InsertarCredencial(new ClassEntidades.Credencial()
+                {
+                    Curp = TxtCurp.Value,
+                    Domicilio = TxtDomicilio.Value,
+                    Estado = DropEstado.SelectedItem.ToString(),
+                    Municipio = DropMunicipio.SelectedItem.ToString(),
+                    Nombre = TxtNombre.Value,
+                    Seccion = Convert.ToInt32(TxtSeccion.Value),
+                    Vigencia = Convert.ToInt32(TxtVigencia.Value),
+                });
 
+
+                Session["bl"] = bl;
+                    
                 TxtCurp.Value = "";
                 TxtDomicilio.Value = "";
                 TxtNombre.Value = "";

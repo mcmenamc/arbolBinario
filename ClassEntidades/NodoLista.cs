@@ -9,13 +9,14 @@ namespace ClassEntidades
     public class NodoLista
     {
         public Credencial informacion;
-        public NodoLista siguente = null;
+        public NodoLista der = null;
+        public NodoLista izq = null;
 
-
-        public NodoLista(Credencial objnuevo)
-        {
-            informacion = objnuevo;
-            siguente = null;
-        }
+        //public NodoLista(Credencial objnuevo)
+        //{
+        //    informacion = objnuevo;
+        //    der = null;
+        //    izq = null;
+        //}
     }
 }
