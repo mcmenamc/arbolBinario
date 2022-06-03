@@ -60,22 +60,22 @@ namespace WebPresentacion
         protected global::System.Web.UI.HtmlControls.HtmlInputText TxtNombre;
 
         /// <summary>
-        /// Control DropEstado.
+        /// Control DropEstados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropEstado;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect DropEstados;
 
         /// <summary>
-        /// Control DropMunicipio.
+        /// Control DropMunicipios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropMunicipio;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect DropMunicipios;
 
         /// <summary>
         /// Control TxtDomicilio.

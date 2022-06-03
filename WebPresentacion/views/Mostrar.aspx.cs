@@ -15,16 +15,23 @@ namespace WebPresentacion.views
                 bl = (LogicaNegocio)Session["bl"];
             }
             ListBox1.Items.Clear();
-
-            //Credencial[] credenciales = bl.ImprimePre();
-            //foreach (Credencial credencial in credenciales)
-            //{
-            //    ListBox1.Items.Add(credencial.Mostrar());
-            //}
             
-            Credencial[] credenciales = bl.ImprimePre();
-            foreach (Credencial credencial in credenciales) {
-                ListBox1.Items.Add(credencial.Curp);
+            var Credenciales = bl.ImprimePreOrden();
+            foreach (Credencial credencial in Credenciales) {
+                if(credencial != null)
+                    ListBox1.Items.Add(credencial.Curp);
+            }
+            var CredencialesP = bl.ImprimeInOrden();
+            foreach (Credencial credencial in CredencialesP)
+            {
+                if (credencial != null)
+                    ListBox2.Items.Add(credencial.Curp);
+            }
+            var Credenciales2 = bl.ImprimePostOrden();
+            foreach (Credencial credencial in Credenciales2)
+            {
+                if (credencial != null)
+                    ListBox3.Items.Add(credencial.Curp);
             }
 
         }
@@ -32,6 +39,6 @@ namespace WebPresentacion.views
         //{
         //    return bl.MostrarCredencial();
         //}
-        
+
     }
 }

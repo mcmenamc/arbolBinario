@@ -10,14 +10,14 @@ namespace ClassDAL
 {
     public class ClassLista
     {
+
         private NodoLista Ancla;
-        private int cuantaNodo = 0;
-        
+        private List<Credencial> Credenciales;
         public ClassLista()
         {
-            Ancla = null;
+            this.Ancla = null;
         }
-
+        
         public string Insertar(Credencial info)
         {
             NodoLista nuevo;
@@ -25,145 +25,114 @@ namespace ClassDAL
             nuevo.informacion = info;
             nuevo.izq = null;
             nuevo.der = null;
+            int nivel = 0;
             string mensaje;
             if (this.Ancla == null)
             {
                 this.Ancla = nuevo;
-                mensaje = "Cabeza "+ this.Ancla.informacion.Mostrar();
+                mensaje = "Se inserto en la raíz como nivel -> " + nivel;
             }
             else
             {
-                NodoLista anterior = null, reco;
+                NodoLista anterior = null;
+                NodoLista reco;
                 reco = this.Ancla;
                 while (reco != null)
                 {
                     anterior = reco;
-                    if(info.Curp.Length < reco.informacion.Curp.Length)
+                    nivel++;
+                    if(info.Curp.CompareTo(reco.informacion.Curp) < 0)
                         reco = reco.izq;
                     else
                         reco = reco.der;
                 }
-                if (info.Curp.Length < anterior.informacion.Curp.Length)
+                if (info.Curp.CompareTo(anterior.informacion.Curp) < 0)
                 {
                     anterior.izq = nuevo;
-                    mensaje = "izquierda" + nuevo.informacion.Mostrar();
+                    mensaje = "Se inserto a la Izquierda en la sub rama -> " + nivel;
                 }
                 else
                 {
                     anterior.der = nuevo;
-                    mensaje = "Derechca " + nuevo.informacion.Mostrar();
+                    mensaje = "Se inserto a la Derecha nivel ->  " + nivel;
                 }
-                    
             }
-            cuantaNodo++;
             return mensaje;
         }
-        private Credencial ImprimePre(NodoLista reco)
+        private void PreOrden(NodoLista reco)
         {
-            Credencial nodoLista = null;
             if(reco != null)
             {
-                nodoLista = reco.informacion;
-                this.ImprimePre(reco.izq);
-                this.ImprimePre(reco.der);
+                Credenciales.Add(reco.informacion);
+                this.PreOrden(reco.izq);
+                this.PreOrden(reco.der);
             }
-            return nodoLista;
         }
-
-        public Credencial[] imprimePre()
+        public List<Credencial> PreOrden()
         {
-            Credencial[] resultados = new Credencial[cuantaNodo];
-
-            int c = 0;
             NodoLista r1 = null;
             r1 = this.Ancla;
-            while (c < cuantaNodo){
-                resultados[c] = this.ImprimePre(r1);
-                c++;
+            this.Credenciales = new List<Credencial>();
+            this.PreOrden(r1);
+            return this.Credenciales;
+        }
+        private void InOrden(NodoLista reco)
+        {
+            if (reco != null)
+            {
+                this.InOrden(reco.izq);
+                Credenciales.Add(reco.informacion);
+                this.InOrden(reco.der);
             }
-            return resultados;
+        }
+        public List<Credencial> InOrden()
+        {
+            NodoLista r1 = null;
+            r1 = this.Ancla;
+            this.Credenciales = new List<Credencial>();
+            this.InOrden(r1);
+            return this.Credenciales;
+        }
+        private void PostOrden(NodoLista reco)
+        {
+            if (reco != null)
+            {
+                this.PostOrden(reco.izq);
+                this.PostOrden(reco.der);
+                Credenciales.Add(reco.informacion);
+            }
+        }
+        public List<Credencial> PostOrden()
+        {
+            NodoLista r1 = null;
+            r1 = this.Ancla;
+            this.Credenciales = new List<Credencial>();
+            this.PostOrden(r1);
+            return this.Credenciales;
         }
 
-        
-        //public Credencial[] MostrarLista()
-        //{
-        //    Credencial[] resultados = new Credencial[cuantaNodo];
-
-        //    NodoLista r1 = null;
-        //    int c = 0;
-        //    r1 = Ancla;
-
-        //    while (r1 != null)
-        //    {
-        //        resultados[c] = r1.informacion;
-        //        c++;
-        //        r1 = r1.siguente;
-        //    }
-        //    return resultados;
-        //}
-        //public NodoLista Buscar(string curp)
-        //{
-        //    NodoLista r1 = null;
-        //    NodoLista piedrita = null;
-        //    r1 = Ancla;
-        //    while(r1 != null)
-        //    {
-        //        if(r1.informacion.Curp == curp)
-        //        {
-        //            piedrita = r1;
-        //        }
-        //        r1 = r1.siguente;
-        //    }
-        //    return piedrita;
-        //}
-        //public NodoLista AnteriorParaBuscarEliminar(string curp)
-        //{
-        //    NodoLista r1 = null;
-        //    NodoLista Anterio = null;
-        //    NodoLista AnteriorEncontrado = null;
-        //    r1 = Ancla;
-        //    Anterio = r1;
-        //    while(r1 != null)
-        //    {
-        //        if(r1.informacion.Curp == curp)
-        //        {
-        //            AnteriorEncontrado = Anterio;
-        //        }
-        //        Anterio = r1;
-        //        r1 = r1.siguente;
-        //    }
-        //    return AnteriorEncontrado;
-        //}
-        //public string EliminarNodo(string curp)
-        //{
-        //    NodoLista Encontrado = null;
-        //    NodoLista Anterior = null;
-        //    string Salida = "";
-        //    Encontrado = Buscar(curp);
-        //    if(Encontrado != null)
-        //    {
-        //        if(Encontrado == Ancla)
-        //        {
-        //            Ancla = Encontrado.siguente;
-        //            Encontrado.siguente = null;
-        //            Salida = "Se elimino el primer elemento";
-        //        }
-        //        else
-        //        {
-        //            Anterior = AnteriorParaBuscarEliminar(curp);
-        //            Anterior.siguente = Encontrado.siguente;
-        //            Encontrado.siguente = null;
-        //            Encontrado = null;
-        //            Salida = "Se elimino correctamente";
-        //        }
-        //        cuantaNodo--;
-        //    }
-        //    else
-        //    {
-        //        Salida = "No se encontro por que no existe";
-        //    }
-        //    return Salida;
-        //}
+        public Credencial Buscar(string Curp)
+        {
+            NodoLista reco = null;
+            reco = this.Ancla;
+            while (reco != null)
+            {
+                if (Curp == reco.informacion.Curp)
+                    return reco.informacion;
+                else
+                {
+                    if (Curp.CompareTo(reco.informacion.Curp) > 0)
+                    {
+                        reco = reco.der;
+                    }
+                    else
+                    {
+                        reco = reco.izq;
+                    }
+                }
+            }
+            return null;
+        }
     }
 
 }

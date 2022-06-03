@@ -102,6 +102,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="ErrorPages\Oops.aspx" />
+    <Content Include="Graficador.aspx" />
     <Content Include="images\favico.ico" />
     <Content Include="images\logo.png" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.css" />
@@ -298,6 +299,13 @@
     <Compile Include="ErrorPages\Oops.aspx.designer.cs">
       <DependentUpon>Oops.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Graficador.aspx.cs">
+      <DependentUpon>Graficador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graficador.aspx.designer.cs">
+      <DependentUpon>Graficador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="views\Buscar.aspx.cs">
       <DependentUpon>Buscar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -376,6 +384,7 @@
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="images\insert.webp" />
     <None Include="packages.config" />
     <Content Include="MasterPage\Site1.Master" />
     <Content Include="Scripts\bootstrap.min.js.map" />

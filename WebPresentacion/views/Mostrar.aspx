@@ -14,6 +14,10 @@
     <form id="form1" runat="server">
 
         <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+        <asp:ListBox ID="ListBox2" runat="server"></asp:ListBox>
+        <asp:ListBox ID="ListBox3" runat="server"></asp:ListBox>
+
+
         
 
 

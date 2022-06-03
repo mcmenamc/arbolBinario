@@ -11,14 +11,14 @@
         <asp:Label ID="Alerta" runat="server" Text="Label"></asp:Label>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <form id="form1" runat="server" class="row justify-content-center mt-4 mb-4 g-3 needs-validation shadow-sm bg-light rounded" novalidate >
+    <form id="form1" runat="server" method="post" class="row justify-content-center mt-4 mb-4 g-3 needs-validation shadow-sm bg-light rounded" novalidate >
         <div class="col-auto">
         <h3>Generador de credenciales</h3>
         </div>
         <div class="col-12">
             <div class="row justify-content-center pa-0">
                 <div class="col-5 col-md-2">
-                    <img class="img-fluid img" src="https://cdn2.iconfinder.com/data/icons/interface-116/200/enter-password-2--enter-password-INTERFACE-LOGIN-USER-CREDENTIALS-UI-PROFILE-MAN-LAPTOP-PC-MAN-512.png" />
+                    <img class="img-fluid img" alt="Logo Insertar" src="https://cdn2.iconfinder.com/data/icons/interface-116/200/enter-password-2--enter-password-INTERFACE-LOGIN-USER-CREDENTIALS-UI-PROFILE-MAN-LAPTOP-PC-MAN-512.png" />
                 </div>
             </div>
         </div>
@@ -46,8 +46,8 @@
 
         <div class="col-12 col-md-5">
             <label class="form-label">Estado:</label>
-            <%--<select runat="server" id="DropEstados" name="DropEstados" class="form-select" required></select>--%>
-            <asp:DropDownList ID="DropEstado"   CssClass="form-select" runat="server"></asp:DropDownList>
+            <select runat="server" id="DropEstados" name="DropEstados" class="form-select" required></select>
+            <%--<asp:DropDownkList ID="DropEstado"   CssClass="form-select" runat="server"></asp:DropDownkList>--%>
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -58,8 +58,8 @@
 
         <div class="col-12 col-md-5">
             <label class="form-label">Municipio:</label>
-            <%--<select runat="server" id="DropMunicipios" name="DropMunicipios" class="form-select" required></select>--%>
-            <asp:DropDownList ID="DropMunicipio" CssClass="form-select" runat="server"></asp:DropDownList>
+            <select runat="server" id="DropMunicipios" name="DropMunicipios" class="form-select" required></select>
+            <%--<asp:DropDownList ID="DropMunicipio" CssClass="form-select" runat="server"></asp:DropDownList>--%>
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -102,14 +102,14 @@
             </div>
         </div>
         <div class="col-5 mt-4 mb-3 d-flex justify-content-center">
-            <asp:Button ID="Button1" runat="server" class="btn btn-primary"  OnClick="Button1_Click" Text="Generar Credencial" />
+            <asp:Button ID="Button1" runat="server"  class="btn btn-primary"  OnClick="Button1_Click" Text="Generar Credencial" />
         </div>
     </form>
     <script>
 
         var URLactual = jQuery(location)[0].origin + '/Catalogues'
-        const DropEstados = $('#ContentPlaceHolder1_DropEstado');
-        const DropMunicipios = $('#ContentPlaceHolder1_DropMunicipio');
+        const DropEstados = $('#ContentPlaceHolder1_DropEstados');
+        const DropMunicipios = $('#ContentPlaceHolder1_DropMunicipios');
 
         ( () => {
             DropMunicipios.prop('disabled', true);
@@ -119,8 +119,7 @@
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
-                    }
-
+                    } 
                     form.classList.add('was-validated')
                 }, false)
             })

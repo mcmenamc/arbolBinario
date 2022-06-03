@@ -7,20 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebPresentacion.views
+namespace WebPresentacion
 {
 
 
-    public partial class Buscar
+    public partial class Graficador
     {
-
-        /// <summary>
-        /// Control form3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form3;
     }
 }

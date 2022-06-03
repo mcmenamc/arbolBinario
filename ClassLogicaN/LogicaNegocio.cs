@@ -16,34 +16,21 @@ namespace ClassLogicaN
         {
             return objDAL.Insertar(nuevo);
         }
-        public Credencial[] ImprimePre()
+        public List<Credencial> ImprimePreOrden()
         {
-            return objDAL.imprimePre();
+            return objDAL.PreOrden();
         }
-        
-        //public Credencial[] MostrarCredencial()
-        //{
-        //    return objDAL.MostrarLista();
-        //}
-
-        //public string BuscarCredencial(string curp)
-        //{
-        //    string salida = "";
-        //    NodoLista piedra = null;
-        //    piedra = objDAL.Buscar(curp);
-        //    if(piedra == null)
-        //    {
-        //        salida = "No se encontro con la credencial";
-        //    }
-        //    else
-        //    {
-        //        salida = "Credencial:" + piedra.informacion.Mostrar();
-        //    }
-        //    return salida;
-        //}
-        //public string EliminarCredencial(string curp)
-        //{
-        //    return objDAL.EliminarNodo(curp);
-        //}
+        public List<Credencial> ImprimeInOrden()
+        {
+            return objDAL.InOrden();
+        }
+        public List<Credencial> ImprimePostOrden()
+        {
+            return objDAL.PostOrden();
+        }
+        public Credencial Buscar(string Curp)
+        {
+            return objDAL.Buscar(Curp);
+        }
     }   
 }
