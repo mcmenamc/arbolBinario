@@ -32,5 +32,10 @@ namespace ClassLogicaN
         {
             return objDAL.Buscar(Curp);
         }
+
+        public Credencial Eliminar(string Curp)
+        {
+            return objDAL.EliminarNodo(Curp);
+        }
     }   
 }

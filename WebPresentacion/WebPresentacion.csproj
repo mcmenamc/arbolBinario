@@ -384,7 +384,6 @@
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
-    <Content Include="images\insert.webp" />
     <None Include="packages.config" />
     <Content Include="MasterPage\Site1.Master" />
     <Content Include="Scripts\bootstrap.min.js.map" />

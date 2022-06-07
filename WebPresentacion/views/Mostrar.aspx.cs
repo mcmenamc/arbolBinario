@@ -19,7 +19,7 @@ namespace WebPresentacion.views
             var Credenciales = bl.ImprimePreOrden();
             foreach (Credencial credencial in Credenciales) {
                 if(credencial != null)
-                    ListBox1.Items.Add(credencial.Curp);
+                    ListBox1.Items.Add(credencial.Mostrar());
             }
             var CredencialesP = bl.ImprimeInOrden();
             foreach (Credencial credencial in CredencialesP)

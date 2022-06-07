@@ -21,6 +21,10 @@ namespace WebPresentacion.views
             string Curp = "MERJE001HPLNSSA5";
 
             Response.Write(bl.Buscar(Curp).Mostrar());
+
+
+
+
         }
     }
 }

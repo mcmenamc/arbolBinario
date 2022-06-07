@@ -24,7 +24,7 @@
         </div>
         <div class="col-12 col-md-10 mt-0">
             <label for="TxtCurp" class="form-label">Curp:</label>
-            <input type="text" runat="server" id="TxtCurp" class="form-control" required />
+            <input type="text" id="TxtCurp" name="TxtCurp" class="form-control" required />
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -35,7 +35,7 @@
 
         <div class="col-12 col-md-10 ">
             <label class="form-label">Nombre:</label>
-            <input type="text" runat="server" id="TxtNombre" class="form-control" required />
+            <input type="text" id="TxtNombre" name="TxtNombre" class="form-control" required />
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -46,8 +46,9 @@
 
         <div class="col-12 col-md-5">
             <label class="form-label">Estado:</label>
-            <select runat="server" id="DropEstados" name="DropEstados" class="form-select" required></select>
+            <select id="DropEstados" name="DropEstados" class="form-select" required></select>
             <%--<asp:DropDownkList ID="DropEstado"   CssClass="form-select" runat="server"></asp:DropDownkList>--%>
+            <input  type="hidden" id="TxtEstado" name="TxtEstado"/>
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -58,7 +59,8 @@
 
         <div class="col-12 col-md-5">
             <label class="form-label">Municipio:</label>
-            <select runat="server" id="DropMunicipios" name="DropMunicipios" class="form-select" required></select>
+            <select id="DropMunicipios" name="DropMunicipios" class="form-select" required></select>
+            <input  type="hidden" id="TxtMunicipio" name="TxtMunicipio"/>
             <%--<asp:DropDownList ID="DropMunicipio" CssClass="form-select" runat="server"></asp:DropDownList>--%>
             <div class="valid-feedback">
                 ¡Se ve bien!
@@ -67,10 +69,9 @@
                 Por favor, elija un nombre de Municipio.
             </div>
         </div>
-
         <div class="col-12 col-md-10">
             <label class="form-label">Domicilio:</label>
-            <input type="text" runat="server" id="TxtDomicilio" class="form-control" required />
+            <input type="text" id="TxtDomicilio" name="TxtDomicilio" class="form-control" required />
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -80,7 +81,7 @@
         </div>
         <div class="col-12 col-md-5">
             <label class="form-label">Sección:</label>
-            <input type="number" runat="server" id="TxtSeccion" class="form-control" required />
+            <input type="number" id="TxtSeccion" name="TxtSeccion" class="form-control" required />
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -90,8 +91,7 @@
         </div>
         <div class="col-12 col-md-5">
             <label class="form-label">Vigencia:</label>
-            <%--<input type="number" runat="server" id="TxtVigencia" class="form-control" required />--%>
-            <input type="number" runat="server"  class="form-control"  id="TxtVigencia" required/>
+            <input type="number" class="form-control" name="TxtVigencia"  id="TxtVigencia" required/>
 
 
             <div class="valid-feedback">
@@ -102,16 +102,17 @@
             </div>
         </div>
         <div class="col-5 mt-4 mb-3 d-flex justify-content-center">
-            <asp:Button ID="Button1" runat="server"  class="btn btn-primary"  OnClick="Button1_Click" Text="Generar Credencial" />
+            <button id="BtnCredencial" class="btn btn-primary" type="submit">Generar Credencial</button>
         </div>
+
     </form>
     <script>
 
         var URLactual = jQuery(location)[0].origin + '/Catalogues'
-        const DropEstados = $('#ContentPlaceHolder1_DropEstados');
-        const DropMunicipios = $('#ContentPlaceHolder1_DropMunicipios');
+        const DropEstados = $('#DropEstados');
+        const DropMunicipios = $('#DropMunicipios');
 
-        ( () => {
+        (() => {
             DropMunicipios.prop('disabled', true);
             const forms = document.querySelectorAll('.needs-validation')
             Array.from(forms).forEach(form => {
@@ -125,7 +126,8 @@
             })
         })()
 
-        $(document).ready(function (){
+        $(document).ready(function () {
+            DropEstados.empty().append('<option value=""></option>');
             $.ajax({
                 type: 'GET',
                 url: URLactual + '/Estados.json',
@@ -140,7 +142,7 @@
                 }
             });
 
-            $("#ContentPlaceHolder1_TxtVigencia").datepicker({
+            $("#TxtVigencia").datepicker({
                 format: "yyyy",
                 viewMode: "years",
                 minViewMode: "years",
@@ -150,6 +152,7 @@
 
         DropEstados.change(function () {
             const estado = $(this).val();
+            $("#TxtEstado").val($("#DropEstados :selected").text());
             DropMunicipios.empty().append('<option value=""></option>').prop('disabled', false);
             if (estado != "") {
                 $.ajax({
@@ -169,6 +172,10 @@
             } else {
                 DropMunicipios.prop('disabled', true);
             }
+        });
+
+        DropMunicipios.change(function () {
+            $("#TxtMunicipio").val($("#DropMunicipios :selected").text());
         });
     </script>
 </asp:Content>

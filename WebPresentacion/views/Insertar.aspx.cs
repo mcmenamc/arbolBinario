@@ -15,41 +15,61 @@ namespace WebPresentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Alerta.Text = "";
-            Al.Visible = false;
-            DropEstados.Items.Clear();
-            DropEstados.Items.Add("");
-
-            DropMunicipios.Items.Clear();
-            DropMunicipios.Items.Add("");
-
             if (Session["bl"] != null)
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
-            if(Request.HttpMethod == "POST")
+
+            Alerta.Text = "";
+            Al.Visible = false;
+
+
+            //Response.Write("Curp: " + Request.Form["TxtCurp"]);
+            //Response.Write("<br> Nombre: "+ Request.Form["TxtNombre"]);
+            ////Response.Write("<br> Estado: " + Request.Form["DropEstados"]);
+            ////Response.Write("<br> Municipio: " + Request.Form["DropMunicipios"]);
+            //Response.Write("<br> Domicilio: " + Request.Form["TxtDomicilio"]);
+            //Response.Write("<br> Sección: " + Request.Form["TxtSeccion"]);
+            //Response.Write("<br> Vigencia: " + Request.Form["TxtVigencia"]);
+            //Response.Write("<br> Credencial" + Request.Form["BtnCredencial"]);
+            //Response.Write("<br> sssssTxtDomicilio: " + Request.Form["TxtEstado"]);
+            //Response.Write("<br> sssssTxtMunicipio: " + Request.Form["TxtMunicipio"]);
+
+
+
+
+
+            //DropEstados.Items.Clear();
+            //DropEstados.Items.Add("");
+
+            //DropMunicipios.Items.Clear();
+            //DropMunicipios.Items.Add("");
+
+
+            if (Request.HttpMethod == "POST")
             {
-                Response.Write(Request.Form[""]);
+
                 try
                 {
                     Alerta.Text = bl.InsertarCredencial(new ClassEntidades.Credencial()
                     {
-                        Curp = TxtCurp.Value,
-                        Domicilio = TxtDomicilio.Value,
-                        Estado = DropEstados.Value,
-                        Municipio = DropMunicipios.Value,
-                        Nombre = TxtNombre.Value,
-                        Seccion = Convert.ToInt32(TxtSeccion.Value),
-                        Vigencia = Convert.ToInt32(TxtVigencia.Value),
+                        Curp = Request.Form["TxtCurp"],
+                        Domicilio = Request.Form["TxtDomicilio"],
+                        Estado = Request.Form["TxtEstado"],
+                        Municipio = Request.Form["TxtMunicipio"],
+                        Nombre = Request.Form["TxtNombre"],
+                        Seccion = Convert.ToInt32(Request.Form["TxtSeccion"]),
+                        Vigencia = Convert.ToInt32(Request.Form["TxtVigencia"]),
                     });
+
                     Session["bl"] = bl;
-                    TxtCurp.Value = "";
-                    TxtDomicilio.Value = "";
-                    TxtNombre.Value = "";
-                    DropEstados.SelectedIndex = 0;
-                    DropMunicipios.SelectedIndex = 0;
-                    TxtSeccion.Value = "";
-                    TxtVigencia.Value = "";
+                    //TxtCurp.Value = "";
+                    //TxtDomicilio.Value = "";
+                    //TxtNombre.Value = "";
+                    //DropEstados.SelectedIndex = 0;
+                    //DropMunicipios.SelectedIndex = 0;
+                    //TxtSeccion.Value = "";
+                    //TxtVigencia.Value = "";
                 }
                 catch (Exception ex)
                 {
@@ -58,9 +78,6 @@ namespace WebPresentacion
                 Al.Visible = true;
             }
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+
     }
 }

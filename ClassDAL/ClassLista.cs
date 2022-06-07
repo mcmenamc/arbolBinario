@@ -15,9 +15,8 @@ namespace ClassDAL
         private List<Credencial> Credenciales;
         public ClassLista()
         {
-            this.Ancla = null;
+            this.Ancla = null;  
         }
-        
         public string Insertar(Credencial info)
         {
             NodoLista nuevo;
@@ -41,27 +40,34 @@ namespace ClassDAL
                 {
                     anterior = reco;
                     nivel++;
-                    if(info.Curp.CompareTo(reco.informacion.Curp) < 0)
+                    if (info.Curp.CompareTo(reco.informacion.Curp) < 0)
                         reco = reco.izq;
                     else
                         reco = reco.der;
                 }
-                if (info.Curp.CompareTo(anterior.informacion.Curp) < 0)
+                if(info.Curp == anterior.informacion.Curp)
                 {
-                    anterior.izq = nuevo;
-                    mensaje = "Se inserto a la Izquierda en la sub rama -> " + nivel;
+                    mensaje = "Credencial ya insertada anteriormente:v";
                 }
                 else
                 {
-                    anterior.der = nuevo;
-                    mensaje = "Se inserto a la Derecha nivel ->  " + nivel;
+                    if (info.Curp.CompareTo(anterior.informacion.Curp) < 0)
+                    {
+                        mensaje = "Se inserto a la Izquierda en la sub rama -> " + nivel;
+                    }
+                    else
+                    {
+                        anterior.der = nuevo;
+                        mensaje = "Se inserto a la Derecha nivel ->  " + nivel;
+                    }
                 }
+                
             }
             return mensaje;
         }
         private void PreOrden(NodoLista reco)
         {
-            if(reco != null)
+            if (reco != null)
             {
                 Credenciales.Add(reco.informacion);
                 this.PreOrden(reco.izq);
@@ -122,17 +128,131 @@ namespace ClassDAL
                 else
                 {
                     if (Curp.CompareTo(reco.informacion.Curp) > 0)
-                    {
                         reco = reco.der;
-                    }
                     else
-                    {
                         reco = reco.izq;
-                    }
                 }
             }
-            return null;
+            if(reco == null)
+                return new Credencial();
+            return reco.informacion;
         }
-    }
 
+        private NodoLista BuscaMinimo(NodoLista t)
+        {
+            if (t == null)
+                return (null); //si árbol vacío retorna NULL
+            else // Si no es vacío
+                if (t.izq == null)
+                return (t); // Si no tiene hijo izquierdo: lo encontró.
+            else
+                return (BuscaMinimo(t.izq)); //busca en subárbol izquierdo.
+        }
+        private NodoLista MenorDescendiente(NodoLista t)
+        {
+            if (t == null)
+                return null; // si el arbol esta vacío retorna null
+            if (t.der == null)
+                return null; // si no tiene hijos derechos no hay sucesor
+            return (BuscaMinimo(t.der));
+
+        }
+
+        private NodoLista Eliminar(NodoLista nodo, string Curp)
+        {
+            NodoLista temp;
+            if (nodo == null)
+                return nodo;
+            else if (Curp.CompareTo(nodo.informacion.Curp) < 0)
+                nodo.izq = Eliminar(nodo.izq, Curp);
+            else if(Curp.CompareTo(nodo.informacion.Curp) > 0)
+                nodo.der = Eliminar(nodo.der, Curp);
+            else// Se encontro el elemento a eliminar
+            {
+                if (nodo.izq != null && nodo.der != null) // dos hijos: remplazar con
+                {
+                    temp = this.MenorDescendiente(nodo.der);
+                    nodo.informacion.Curp = temp.informacion.Curp;
+                    nodo.der = this.Eliminar(nodo.der, temp.informacion.Curp);
+                }
+                else // un hijo o ninguno
+                {
+                    temp = nodo;
+                    if (nodo.izq == null)
+                        nodo = nodo.der;
+                    else if (nodo.der == null)
+                        nodo = nodo.izq;
+                    temp = null; // liberar espacio
+                }
+            }
+            return nodo;
+        }
+
+        public Credencial EliminarNodo(string Curp)
+        {
+            NodoLista r1;
+            r1 = this.Ancla;
+            return this.Eliminar(r1, Curp).informacion;
+        }
+
+
+        //    private NodoLista BuscarMin(NodoLista Arbol)
+        //    {
+        //        if (Arbol == null)
+        //            return BuscarMin(null);
+        //        else
+        //        {
+        //            if (Arbol.izq == null)
+        //                return BuscarMin(null);
+        //            else
+        //                return BuscarMin(Arbol.izq);
+        //        }
+        //    }
+
+
+        //    public string EliminarNodo(string Curp, NodoLista Arbol)
+        //    {
+        //        var celda_Temp = this.Ancla;
+        //        string mensaje = "";
+        //        if (Arbol == null)
+        //            mensaje = "¡Elemento no encontrado!";
+        //        else
+        //        {
+        //            if (Curp.CompareTo(Arbol.informacion.Curp) < 0)
+        //                EliminarNodo(Curp, Arbol.izq);
+        //            else
+        //            {
+        //                if(Curp.CompareTo(Arbol.informacion.Curp) > 0)
+        //                    EliminarNodo(Curp, Arbol.der);
+        //                else
+        //                {
+        //                    if (Arbol.izq != null)// duda
+        //                    {
+        //                        celda_Temp = Arbol;
+        //                        Arbol = Arbol.der;
+        //                        //GC.SuppressFinalize(celda_Temp);
+        //                        celda_Temp = null;
+        //                    }
+        //                    else
+        //                    {
+        //                        if (Arbol.der == null)
+        //                        {
+        //                            celda_Temp = Arbol;
+        //                            Arbol = Arbol.izq;
+        //                            celda_Temp = null;
+        //                        }
+        //                        else
+        //                        {
+        //                            celda_Temp = 
+        //                        }
+
+        //                    }
+        //                }
+
+
+        //            }
+        //        }
+        //        return mensaje;
+        //    }
+    }
 }
