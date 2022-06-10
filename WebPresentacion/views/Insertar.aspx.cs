@@ -6,6 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLogicaN;
 using ClassEntidades;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace WebPresentacion
 {
@@ -19,6 +24,7 @@ namespace WebPresentacion
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
+
 
             Alerta.Text = "";
             Al.Visible = false;
@@ -36,19 +42,8 @@ namespace WebPresentacion
             //Response.Write("<br> sssssTxtMunicipio: " + Request.Form["TxtMunicipio"]);
 
 
-
-
-
-            //DropEstados.Items.Clear();
-            //DropEstados.Items.Add("");
-
-            //DropMunicipios.Items.Clear();
-            //DropMunicipios.Items.Add("");
-
-
             if (Request.HttpMethod == "POST")
             {
-
                 try
                 {
                     Alerta.Text = bl.InsertarCredencial(new ClassEntidades.Credencial()
@@ -63,13 +58,7 @@ namespace WebPresentacion
                     });
 
                     Session["bl"] = bl;
-                    //TxtCurp.Value = "";
-                    //TxtDomicilio.Value = "";
-                    //TxtNombre.Value = "";
-                    //DropEstados.SelectedIndex = 0;
-                    //DropMunicipios.SelectedIndex = 0;
-                    //TxtSeccion.Value = "";
-                    //TxtVigencia.Value = "";
+                    this.GurdarArchivo();
                 }
                 catch (Exception ex)
                 {
@@ -79,5 +68,14 @@ namespace WebPresentacion
             }
         }
 
+        public void GurdarArchivo()
+        {
+            string path = Server.MapPath(Request.ApplicationPath) + "Catalogues/recuperacion.json";
+
+            List<Credencial> Credenciales = bl.Amplitud();
+
+            string json = JsonConvert.SerializeObject(Credenciales);
+            System.IO.File.WriteAllText(path, json);
+        }
     }
 }

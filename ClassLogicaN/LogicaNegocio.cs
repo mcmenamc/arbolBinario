@@ -32,10 +32,13 @@ namespace ClassLogicaN
         {
             return objDAL.Buscar(Curp);
         }
-
-        public Credencial Eliminar(string Curp)
+        public void Eliminar(string Curp)
         {
-            return objDAL.EliminarNodo(Curp);
+            objDAL.EliminarNodo(Curp);
+        }
+        public List<Credencial> Amplitud()
+        {
+            return objDAL.Amplitud();
         }
     }   
 }

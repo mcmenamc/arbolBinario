@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebPresentacion.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebPresentacion.Site1"  %>
 
 <!DOCTYPE html>
 
@@ -47,7 +47,7 @@
                     <a class="nav-link mx-3 " href="/views/Eliminar.aspx "><i class="fa-solid fa-trash-can "></i> Eliminar</a>
                     <a class="nav-link mx-3 " href="/views/Buscar.aspx"><i class="fa-solid fa-magnifying-glass "></i> Buscar</a>
                     <a class="nav-link mx-3 " href="/views/Graficar.aspx"><i class="fas fa-project-diagram"></i> Graficar</a>
-
+                    <a class="nav-link mx-3 " href="/views/Restaurar.aspx"><i class="fas fa-window-restore"></i> Resturar</a>
                 </div>
             </div>
         </div>

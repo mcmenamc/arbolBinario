@@ -1,6 +1,7 @@
 ﻿using System;
 using ClassLogicaN;
 using ClassEntidades;
+using System.Collections.Generic;
 
 namespace WebPresentacion.views
 {
@@ -14,31 +15,20 @@ namespace WebPresentacion.views
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
-            ListBox1.Items.Clear();
-            
-            var Credenciales = bl.ImprimePreOrden();
-            foreach (Credencial credencial in Credenciales) {
-                if(credencial != null)
-                    ListBox1.Items.Add(credencial.Mostrar());
-            }
-            var CredencialesP = bl.ImprimeInOrden();
-            foreach (Credencial credencial in CredencialesP)
-            {
-                if (credencial != null)
-                    ListBox2.Items.Add(credencial.Curp);
-            }
-            var Credenciales2 = bl.ImprimePostOrden();
-            foreach (Credencial credencial in Credenciales2)
-            {
-                if (credencial != null)
-                    ListBox3.Items.Add(credencial.Curp);
-            }
+
+                List<Credencial> PreOrdenC = bl.ImprimePreOrden();
+                PreOrden.DataSource = PreOrdenC;
+                PreOrden.DataBind();
+
+                List<Credencial> EntreOrdenC = bl.ImprimeInOrden();
+                EntreOrden.DataSource = EntreOrdenC;
+                EntreOrden.DataBind();
+
+                List<Credencial> PostOrdenC = bl.ImprimePostOrden();
+                PostOrden.DataSource = PostOrdenC;
+                PostOrden.DataBind();
 
         }
-        //public Credencial[] credenciales()
-        //{
-        //    return bl.MostrarCredencial();
-        //}
 
     }
 }

@@ -47,6 +47,10 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -103,6 +107,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="ErrorPages\Oops.aspx" />
     <Content Include="Graficador.aspx" />
+    <Content Include="images\cat-g7f9e26245_1280.png" />
+    <Content Include="images\database-g9fc7f8505_1280.png" />
+    <Content Include="images\debt-ge86c86862_1280.png" />
     <Content Include="images\favico.ico" />
     <Content Include="images\logo.png" />
     <Content Include="lib\bootstrap-datepicker\css\bootstrap-datepicker.css" />
@@ -289,6 +296,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="views\Mostrar.aspx" />
+    <Content Include="views\Restaurar.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +356,13 @@
     </Compile>
     <Compile Include="views\Mostrar.aspx.designer.cs">
       <DependentUpon>Mostrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Restaurar.aspx.cs">
+      <DependentUpon>Restaurar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Restaurar.aspx.designer.cs">
+      <DependentUpon>Restaurar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

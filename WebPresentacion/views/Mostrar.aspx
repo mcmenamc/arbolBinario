@@ -1,33 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="Mostrar.aspx.cs" Inherits="WebPresentacion.views.Mostrar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .color {
-            background-color: #D3D3D3;
-            margin: 20px 0px;
-        }
-    </style>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
     <form id="form1" runat="server">
-
-        <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
-        <asp:ListBox ID="ListBox2" runat="server"></asp:ListBox>
-        <asp:ListBox ID="ListBox3" runat="server"></asp:ListBox>
-
-
+        <h3 runat="server">Pre Orden</h3>
+        <asp:GridView ID="PreOrden" CssClass="table table-primary" runat="server"></asp:GridView>
         
-
+        <h3 runat="server">Entre Orden</h3>
+        <asp:GridView ID="EntreOrden" CssClass="table table-primary" runat="server"></asp:GridView>
+        
+        <h3 runat="server">Post Orden</h3>
+        <asp:GridView ID="PostOrden" CssClass="table table-primary" runat="server"></asp:GridView>
 
     </form>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
-    </script>
 
 </asp:Content>

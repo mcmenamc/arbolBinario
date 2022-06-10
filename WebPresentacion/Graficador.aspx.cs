@@ -51,9 +51,9 @@ namespace WebPresentacion
 
 
 
-                
 
-            papel.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 0, dimx, dimy)); // fondo de mi imagen
+
+            papel.FillRectangle(new SolidBrush(Color.FromArgb(243, 243, 243)), new Rectangle(0, 0, dimx, dimy)); // fondo de mi imagen
 
             
             Pen lapiz = new Pen(Color.FromArgb(244, 217, 255), 1); // lapiz

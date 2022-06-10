@@ -160,3 +160,5 @@ C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\obj\Debug\WebPre
 C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\obj\Debug\WebPresentacion.csproj.CopyComplete
 C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\obj\Debug\WebPresentacion.dll
 C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\obj\Debug\WebPresentacion.pdb
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\bin\Newtonsoft.Json.dll
+C:\Users\mcmen\OneDrive\Escritorio\arbolBinario\WebPresentacion\bin\Newtonsoft.Json.xml

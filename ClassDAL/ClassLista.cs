@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,7 @@ namespace ClassDAL
             string mensaje;
             if (this.Ancla == null)
             {
+                
                 this.Ancla = nuevo;
                 mensaje = "Se inserto en la raíz como nivel -> " + nivel;
             }
@@ -36,6 +38,11 @@ namespace ClassDAL
                 NodoLista anterior = null;
                 NodoLista reco;
                 reco = this.Ancla;
+                if(reco.informacion.Curp == nuevo.informacion.Curp)
+                {
+                    return "Credencial ya insertada anteriormente";
+                }
+
                 while (reco != null)
                 {
                     anterior = reco;
@@ -47,12 +54,13 @@ namespace ClassDAL
                 }
                 if(info.Curp == anterior.informacion.Curp)
                 {
-                    mensaje = "Credencial ya insertada anteriormente:v";
+                    mensaje = "Credencial ya insertada anteriormente";
                 }
                 else
                 {
                     if (info.Curp.CompareTo(anterior.informacion.Curp) < 0)
                     {
+                        anterior.izq = nuevo;
                         mensaje = "Se inserto a la Izquierda en la sub rama -> " + nivel;
                     }
                     else
@@ -141,12 +149,12 @@ namespace ClassDAL
         private NodoLista BuscaMinimo(NodoLista t)
         {
             if (t == null)
-                return (null); //si árbol vacío retorna NULL
+                return null; //si árbol vacío retorna NULL
             else // Si no es vacío
                 if (t.izq == null)
                 return (t); // Si no tiene hijo izquierdo: lo encontró.
             else
-                return (BuscaMinimo(t.izq)); //busca en subárbol izquierdo.
+                return BuscaMinimo(t.izq); //busca en subárbol izquierdo.
         }
         private NodoLista MenorDescendiente(NodoLista t)
         {
@@ -155,8 +163,180 @@ namespace ClassDAL
             if (t.der == null)
                 return null; // si no tiene hijos derechos no hay sucesor
             return (BuscaMinimo(t.der));
-
         }
+
+        
+
+
+        private List<Credencial> Amplitud(NodoLista NodoLista)
+        {
+            NodoLista reco;
+            reco = NodoLista;
+            Queue<NodoLista> queue = new Queue<NodoLista>();
+            this.Credenciales = new List<Credencial>();
+
+            if (reco != null)
+            {
+                queue.Enqueue(reco);
+            }
+            while (queue.Count > 0)
+            {
+                reco = queue.Dequeue();
+                Credenciales.Add(reco.informacion);
+                if (reco.izq != null)
+                    queue.Enqueue(reco.izq);
+                if (reco.der != null)
+                    queue.Enqueue(reco.der);
+            }
+            return Credenciales;
+        }
+
+        public List<Credencial> Amplitud()
+        {
+            return Amplitud(this.Ancla);
+        }
+
+        //public string EliminarNodo(string Curp)
+        //{
+        //    string mensaje = "";
+        //    NodoLista reco = null;
+        //    reco = this.Ancla;
+        //    NodoLista anterior = null;
+
+        //    while (reco.informacion.Curp != Curp)
+        //    {
+        //        if (Curp.CompareTo(reco.informacion.Curp) < 0)
+        //        {
+        //            anterior = reco;
+        //            reco = reco.izq;
+        //        }
+        //        else
+        //        {
+        //            if (Curp.CompareTo(reco.informacion.Curp)> 0)
+        //            {
+        //                anterior = reco;
+        //                reco = reco.der;
+        //            }
+        //        }
+        //        if (reco == null)
+        //        {
+        //            mensaje = "No Existe el nodo";
+        //        }
+        //    }
+        //    if (reco.der == null)
+        //    {
+        //        if (anterior == null)
+        //        {
+        //            this.Ancla = reco.izq;
+        //            mensaje = "Se elimino la raíz";
+        //        }
+        //        else
+        //        {
+        //            if (anterior.informacion.Curp.CompareTo(reco.informacion.Curp)> 0)
+        //            {
+        //                anterior.izq = reco.izq;
+        //                mensaje = "Se elimino el hijo izquierdo";
+        //            }
+        //            else
+        //            {
+        //                anterior.der = reco.izq;
+        //                mensaje = "Se elimino el nodo";
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (reco.der.izq == null)
+        //        {
+        //            reco.der.izq = reco.izq;
+
+        //            if (anterior == null)
+        //            {
+        //                this.Ancla = reco.der;
+        //                mensaje = "Se elimino el nodo";
+        //            }
+        //            else
+        //            {
+        //                //anterior.der = reco.der;
+        //                //mensaje = "Se elimino cuando no tiene hijo izquierdo";
+        //                if (anterior.informacion.Curp.CompareTo(reco.informacion.Curp) > 0)
+        //                {
+        //                    anterior.izq = reco.der;
+        //                    mensaje = "Se elimino";
+        //                }
+        //                else
+        //                {
+        //                    anterior.der = reco.der;
+        //                    mensaje = "Se elimino el nodo";
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            NodoLista nodoMin = reco.der.izq;
+        //            NodoLista anteriorMin = reco.der;
+
+        //            while (nodoMin.izq != null)
+        //            {
+        //                anteriorMin = nodoMin;
+        //                nodoMin = nodoMin.izq;
+        //            }
+
+        //            anteriorMin.izq = nodoMin.der;
+        //            nodoMin.izq = anteriorMin.izq;
+        //            nodoMin.der = anteriorMin.der;
+
+        //            if (anterior == null)
+        //            {
+        //                this.Ancla = nodoMin;
+        //                mensaje = "Se elimino el nodo Ancla";
+        //            }
+        //            else
+        //            {
+        //                if (anterior.informacion.Curp.CompareTo(reco.informacion.Curp) < 0)
+        //                {
+        //                    anterior.der = nodoMin;
+        //                    mensaje = "Se elimno el nodo";
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return mensaje;
+        //}
+
+        //private NodoLista Eliminar(NodoLista nodo, string Curp)
+        //{
+        //    if (nodo == null)
+        //        return nodo;
+
+        //     if (Curp.CompareTo(nodo.informacion.Curp) < 0)
+        //        nodo.izq = Eliminar(nodo.izq, Curp);
+
+        //    else if (Curp.CompareTo(nodo.informacion.Curp) > 0)
+        //        nodo.der = Eliminar(nodo.der, Curp);
+        //    else// Se encontro el elemento a eliminar
+        //    {
+        //        if (nodo.izq == null) // dos hijos: remplazar con
+        //        {
+        //            NodoLista temp = nodo.der;
+        //            // falta liberar espacio
+        //            temp = null;
+        //            return temp;
+        //        }
+        //        else if(nodo.der == null)// un hijo o ninguno
+        //        {
+        //            NodoLista temp = nodo.izq;
+        //            // falta liberar espacio
+        //            temp = null;
+        //            return temp;
+        //        }
+        //        NodoLista temp2 = BuscaMinimo(nodo.der);
+        //        nodo.informacion.Curp = temp2.informacion.Curp;
+        //        nodo.der = this.Eliminar(nodo.izq, temp2.informacion.Curp);
+
+        //    }
+        //     return nodo;
+        //}
 
         private NodoLista Eliminar(NodoLista nodo, string Curp)
         {
@@ -165,14 +345,14 @@ namespace ClassDAL
                 return nodo;
             else if (Curp.CompareTo(nodo.informacion.Curp) < 0)
                 nodo.izq = Eliminar(nodo.izq, Curp);
-            else if(Curp.CompareTo(nodo.informacion.Curp) > 0)
+            else if (Curp.CompareTo(nodo.informacion.Curp) > 0)
                 nodo.der = Eliminar(nodo.der, Curp);
             else// Se encontro el elemento a eliminar
             {
                 if (nodo.izq != null && nodo.der != null) // dos hijos: remplazar con
                 {
                     temp = this.MenorDescendiente(nodo.der);
-                    nodo.informacion.Curp = temp.informacion.Curp;
+                    nodo.informacion = temp.informacion;
                     nodo.der = this.Eliminar(nodo.der, temp.informacion.Curp);
                 }
                 else // un hijo o ninguno
@@ -188,71 +368,81 @@ namespace ClassDAL
             return nodo;
         }
 
-        public Credencial EliminarNodo(string Curp)
+        public void EliminarNodo(string Curp)
         {
-            NodoLista r1;
-            r1 = this.Ancla;
-            return this.Eliminar(r1, Curp).informacion;
+            
+            this.Eliminar(this.Ancla, Curp);
         }
 
+        //public NodoLista BuscarPadre(string Curp, NodoLista nodo)
+        //{
+        //    NodoLista temp = null;
 
-        //    private NodoLista BuscarMin(NodoLista Arbol)
+        //    if (nodo == null)
+        //        return null;
+
+        //    if (nodo.izq != null)
         //    {
-        //        if (Arbol == null)
-        //            return BuscarMin(null);
-        //        else
-        //        {
-        //            if (Arbol.izq == null)
-        //                return BuscarMin(null);
-        //            else
-        //                return BuscarMin(Arbol.izq);
-        //        }
+        //        if (nodo.izq.informacion.Curp == Curp)
+        //            return nodo;
         //    }
 
-
-        //    public string EliminarNodo(string Curp, NodoLista Arbol)
+        //    if (nodo.der != null)
         //    {
-        //        var celda_Temp = this.Ancla;
-        //        string mensaje = "";
-        //        if (Arbol == null)
-        //            mensaje = "¡Elemento no encontrado!";
+        //        if (nodo.der.informacion.Curp == Curp)
+        //            return nodo;
+        //    }
+
+        //    if (nodo.izq != null && Curp.CompareTo(nodo.informacion.Curp) < 0)
+        //        temp = BuscarPadre(Curp, nodo.izq);
+
+        //    if (nodo.der != null && Curp.CompareTo(nodo.informacion.Curp) > 0)
+        //        temp = BuscarPadre(Curp, nodo.der);
+
+        //    return temp;
+        //}
+
+
+        //private NodoLista borrar3(NodoLista nodo, string curp)
+        //{
+        //    if (nodo == null)
+        //        return nodo;
+            
+        //    if(curp.CompareTo(nodo.informacion.Curp) < 0)
+        //        nodo.izq = borrar3(nodo.izq,curp);
+        //    else
+        //    {
+        //        if(curp.CompareTo(nodo.informacion.Curp) > 0)
+        //            nodo.der = borrar3(nodo.der, curp);
         //        else
         //        {
-        //            if (Curp.CompareTo(Arbol.informacion.Curp) < 0)
-        //                EliminarNodo(Curp, Arbol.izq);
+        //            // casos sin hijos
+        //            if (nodo.izq == null && nodo.der == null)
+        //            {
+        //                nodo = null;
+        //                return nodo;
+        //            }
+
+        //            else if(nodo.izq == null)
+        //            {
+        //                NodoLista padre = this.BuscarPadre(curp, nodo);
+        //                padre.der = nodo.der;
+        //                return nodo;
+        //            }
         //            else
         //            {
-        //                if(Curp.CompareTo(Arbol.informacion.Curp) > 0)
-        //                    EliminarNodo(Curp, Arbol.der);
-        //                else
-        //                {
-        //                    if (Arbol.izq != null)// duda
-        //                    {
-        //                        celda_Temp = Arbol;
-        //                        Arbol = Arbol.der;
-        //                        //GC.SuppressFinalize(celda_Temp);
-        //                        celda_Temp = null;
-        //                    }
-        //                    else
-        //                    {
-        //                        if (Arbol.der == null)
-        //                        {
-        //                            celda_Temp = Arbol;
-        //                            Arbol = Arbol.izq;
-        //                            celda_Temp = null;
-        //                        }
-        //                        else
-        //                        {
-        //                            celda_Temp = 
-        //                        }
-
-        //                    }
-        //                }
-
-
+        //                NodoLista minimo = BuscaMinimo(nodo.der);
+        //                nodo.informacion = minimo.informacion;
+        //                nodo.der = borrar3(nodo.der, minimo.informacion.Curp);
         //            }
         //        }
-        //        return mensaje;
         //    }
+        //    return nodo;
+        //}
+        //public void borrar3(string Curp)
+        //{
+        //    borrar3(this.Ancla, Curp);
+        //}
+       
     }
 }

@@ -18,12 +18,11 @@ namespace WebPresentacion.views
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Label1.Text = bl.Eliminar(TextBox1.Text).Mostrar();
+            bl.Eliminar(TextBox1.Text);
         }
     }
 }
