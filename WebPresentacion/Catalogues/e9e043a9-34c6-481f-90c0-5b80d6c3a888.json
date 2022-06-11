@@ -1,1 +1,29 @@
-[{"Curp":"mena","Nombre":"jesu","Domicilio":"miwidm","Estado":"Baja California","Municipio":"Tecate","Seccion":2819,"Vigencia":2625},{"Curp":"hola que haces","Nombre":"dwdw","Domicilio":"dwwddw","Estado":"Campeche","Municipio":"Campeche","Seccion":121,"Vigencia":2029},{"Curp":"xd","Nombre":"dwdw","Domicilio":"dwwddw1212","Estado":"Morelos","Municipio":"Puente de Ixtla","Seccion":2121,"Vigencia":2026}]
+[
+    {
+        "Curp": "mena",
+        "Nombre": "jesu",
+        "Domicilio": "miwidm",
+        "Estado": "Baja California",
+        "Municipio": "Tecate",
+        "Seccion": 2819,
+        "Vigencia": 2625
+    },
+    {
+        "Curp": "hola que haces",
+        "Nombre": "dwdw",
+        "Domicilio": "dwwddw",
+        "Estado": "Campeche",
+        "Municipio": "Campeche",
+        "Seccion": 121,
+        "Vigencia": 2029
+    },
+    {
+        "Curp": "xd",
+        "Nombre": "dwdw",
+        "Domicilio": "dwwddw1212",
+        "Estado": "Morelos",
+        "Municipio": "Puente de Ixtla",
+        "Seccion": 2121,
+        "Vigencia": 2026
+    }
+]

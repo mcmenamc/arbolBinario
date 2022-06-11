@@ -19,7 +19,6 @@ namespace WebPresentacion.views
                 bl = (LogicaNegocio)Session["bl"];
             }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             bl.Eliminar(TextBox1.Text);

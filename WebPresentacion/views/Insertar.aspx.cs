@@ -17,31 +17,14 @@ namespace WebPresentacion
     public partial class Insertar : System.Web.UI.Page
     {
         LogicaNegocio bl = new LogicaNegocio();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["bl"] != null)
             {
                 bl = (LogicaNegocio)Session["bl"];
             }
-
-
             Alerta.Text = "";
             Al.Visible = false;
-
-
-            //Response.Write("Curp: " + Request.Form["TxtCurp"]);
-            //Response.Write("<br> Nombre: "+ Request.Form["TxtNombre"]);
-            ////Response.Write("<br> Estado: " + Request.Form["DropEstados"]);
-            ////Response.Write("<br> Municipio: " + Request.Form["DropMunicipios"]);
-            //Response.Write("<br> Domicilio: " + Request.Form["TxtDomicilio"]);
-            //Response.Write("<br> Sección: " + Request.Form["TxtSeccion"]);
-            //Response.Write("<br> Vigencia: " + Request.Form["TxtVigencia"]);
-            //Response.Write("<br> Credencial" + Request.Form["BtnCredencial"]);
-            //Response.Write("<br> sssssTxtDomicilio: " + Request.Form["TxtEstado"]);
-            //Response.Write("<br> sssssTxtMunicipio: " + Request.Form["TxtMunicipio"]);
-
-
             if (Request.HttpMethod == "POST")
             {
                 try
@@ -56,7 +39,6 @@ namespace WebPresentacion
                         Seccion = Convert.ToInt32(Request.Form["TxtSeccion"]),
                         Vigencia = Convert.ToInt32(Request.Form["TxtVigencia"]),
                     });
-
                     Session["bl"] = bl;
                     this.GurdarArchivo();
                 }
@@ -67,13 +49,10 @@ namespace WebPresentacion
                 Al.Visible = true;
             }
         }
-
         public void GurdarArchivo()
         {
             string path = Server.MapPath(Request.ApplicationPath) + "Catalogues/recuperacion.json";
-
             List<Credencial> Credenciales = bl.Amplitud();
-
             string json = JsonConvert.SerializeObject(Credenciales);
             System.IO.File.WriteAllText(path, json);
         }

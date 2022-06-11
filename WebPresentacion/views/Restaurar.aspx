@@ -29,27 +29,23 @@
                 </div>
             </div>
         </div>
-
         <div class="col-12" runat="server" id="grid">
-
             <asp:GridView ID="GridView1" CssClass="table table-primary table-responsive" runat="server"></asp:GridView>
         </div>
-
         <div class="col-12">
             <div class="row">
                 <div class="col-lg-6">
-
                     <div class="p-3">
                         <label for="ContentPlaceHolder1_FileUpload1" class="form-label">Selecione un archivo.</label>
-                        <asp:FileUpload ID="FileUpload1"  CssClass="form-control" runat="server" />
+                        <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
                     </div>
                     <div class="p-3 col-lg-3 d-flex">
-
                         <asp:Button ID="Button1" runat="server" CssClass="btn btn-success" Text="Restaurar Archivo Selecionado" OnClick="RestaurarFileDynamic" />
                     </div>
                 </div>
-                <div class="col-lg-6 p-3 py-5 d-flex  justify-content-center">
-                        <asp:Button ID="Backup" runat="server" CssClass="btn btn-success my-3" Text="Realizar respaldo" OnClick="Backup_Click"  />
+                <div class="col-lg-6 p-3 py-5 d-flex justify-content-around">
+                    <a href="../Catalogues/recuperacion.json" class="btn btn-primary my-3" role="button" download="Respaldo.json">Realizar respaldo</a>
+                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-danger my-3" Text="Eliminar todo el árbol" OnClick="Button2_Click1" />
                 </div>
             </div>
         </div>

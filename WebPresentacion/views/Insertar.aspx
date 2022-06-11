@@ -1,12 +1,8 @@
 ﻿
 <%@ Page Title="Insertar Credencial" Language="C#"  MasterPageFile="~/MasterPage/Site1.Master" AutoEventWireup="true" CodeBehind="Insertar.aspx.cs" Inherits="WebPresentacion.Insertar"  EnableEventValidation="false"%>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div id="Al" runat="server" class="alert alert-primary alert-dismissible fade show mt-3" role="alert">
         <asp:Label ID="Alerta" runat="server" Text="Label"></asp:Label>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -32,7 +28,6 @@
                 Por favor, coloque su CURP.
             </div>
         </div>
-
         <div class="col-12 col-md-10 ">
             <label class="form-label" for="TxtNombre">Nombre:</label>
             <input type="text" id="TxtNombre" name="TxtNombre" class="form-control" required />
@@ -43,11 +38,9 @@
                 Por favor, coloque su Nombre Completo.
             </div>
         </div>
-
         <div class="col-12 col-md-5">
             <label class="form-label" for="DropEstados">Estado:</label>
             <select id="DropEstados" name="DropEstados" class="form-select" required></select>
-            <%--<asp:DropDownkList ID="DropEstado"   CssClass="form-select" runat="server"></asp:DropDownkList>--%>
             <input  type="hidden" id="TxtEstado" name="TxtEstado"/>
             <div class="valid-feedback">
                 ¡Se ve bien!
@@ -56,12 +49,10 @@
                 Por favor, elija un nombre de Estado.
             </div>
         </div>
-
         <div class="col-12 col-md-5">
             <label class="form-label" for="DropMunicipios">Municipio:</label>
             <select id="DropMunicipios" name="DropMunicipios" class="form-select" required></select>
             <input  type="hidden" id="TxtMunicipio" name="TxtMunicipio"/>
-            <%--<asp:DropDownList ID="DropMunicipio" CssClass="form-select" runat="server"></asp:DropDownList>--%>
             <div class="valid-feedback">
                 ¡Se ve bien!
             </div>
@@ -106,11 +97,9 @@
         </div>
     </form>
     <script>
-
         var URLactual = jQuery(location)[0].origin + '/Catalogues'
         const DropEstados = $('#DropEstados');
         const DropMunicipios = $('#DropMunicipios');
-
         (() => {
             DropMunicipios.prop('disabled', true);
             const forms = document.querySelectorAll('.needs-validation')
@@ -148,7 +137,6 @@
                 autoclose: true
             });
         });
-
         DropEstados.change(function () {
             const estado = $(this).val();
             $("#TxtEstado").val($("#DropEstados :selected").text());
@@ -172,7 +160,6 @@
                 DropMunicipios.prop('disabled', true);
             }
         });
-
         DropMunicipios.change(function () {
             $("#TxtMunicipio").val($("#DropMunicipios :selected").text());
         });

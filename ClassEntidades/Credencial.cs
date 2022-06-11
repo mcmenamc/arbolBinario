@@ -15,16 +15,5 @@ namespace ClassEntidades
         public string Municipio { get; set; }
         public int Seccion { get; set; }
         public int Vigencia { get; set; }
-
-        public string Mostrar()
-        {
-            return "Credencial-> Curp: " + this.Curp + 
-                " Nombre: " + this.Nombre + 
-                " Domicilio: " + this.Domicilio + 
-                " Estado: " + this.Estado + 
-                " Municipio: " + this.Municipio + 
-                " Sección: " + this.Seccion + 
-                " Vigencia: " + this.Vigencia;
-        }
     }
 }

@@ -11,7 +11,6 @@ namespace WebPresentacion.views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

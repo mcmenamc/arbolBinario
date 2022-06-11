@@ -11,7 +11,6 @@ namespace ClassLogicaN
     public class LogicaNegocio
     {
         private ClassLista objDAL = new ClassLista();
-
         public string InsertarCredencial(Credencial nuevo)
         {
             return objDAL.Insertar(nuevo);
@@ -34,7 +33,7 @@ namespace ClassLogicaN
         }
         public void Eliminar(string Curp)
         {
-            objDAL.EliminarNodo(Curp);
+            objDAL.eliminados(Curp);
         }
         public List<Credencial> Amplitud()
         {

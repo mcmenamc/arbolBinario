@@ -16,13 +16,10 @@ namespace WebPresentacion.views
     {
         LogicaNegocio bl = new LogicaNegocio();
         List<Credencial> recuperado = new List<Credencial>();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["bl"] != null)
-            {
                 bl = (LogicaNegocio)Session["bl"];
-            }
             Alerta.Text = "";
             Al.Visible = false;
             RestaurarAutomatic1.Visible = false;
@@ -54,10 +51,11 @@ namespace WebPresentacion.views
             {
                 StreamReader r = new StreamReader(path);
                 string json = r.ReadToEnd();
+                r.Close();
                 List<Credencial> Credenciales = JsonConvert.DeserializeObject<List<Credencial>>(json);
                 return Credenciales;
             }
-            catch (Exception Ex)
+            catch
             {
                 return null;
             }
@@ -68,6 +66,7 @@ namespace WebPresentacion.views
             {
                 bl.InsertarCredencial(credencial);
             }
+            this.GurdarArchivo();
             Session["bl"] = bl;
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -76,7 +75,6 @@ namespace WebPresentacion.views
         }
         protected void RestaurarFileDynamic(object sender, EventArgs e)
         {
-            
             string cadenaAleatoria = string.Empty;
             cadenaAleatoria = Guid.NewGuid().ToString();
             if (FileUpload1.HasFile)
@@ -94,13 +92,22 @@ namespace WebPresentacion.views
                     FileUpload1.SaveAs(nombre);
                     List<Credencial> Credenciales = this.LeerArchivo(nombre);
                     this.Restaurar(Credenciales);
+                    this.GurdarArchivo();
+                    Session["bl"] = bl;
                 }
-                
             }
         }
-
-        protected void Backup_Click(object sender, EventArgs e)
+        public void GurdarArchivo()
         {
+            string path = Server.MapPath(Request.ApplicationPath) + "Catalogues/recuperacion.json";
+            List<Credencial> Credenciales = bl.Amplitud();
+            string json = JsonConvert.SerializeObject(Credenciales);
+            System.IO.File.WriteAllText(path, json);
+        }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            Session["bl"] = null;
         }
     }
 }

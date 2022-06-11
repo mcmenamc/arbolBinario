@@ -9,5 +9,4 @@
         <img alt="carga" class=" img" src="../Graficador.aspx"  />
     </div>
 </div>
-
 </asp:Content>
